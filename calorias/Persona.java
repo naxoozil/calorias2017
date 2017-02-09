@@ -96,8 +96,11 @@ public class Persona
     
     public String getAlimentoMasCaloricoConsumido()
     {
-        String nombreAlimentoMasCaloricoConsumido = comidaMasCalorica.getNombreComida();
-        System.out.println(nombreAlimentoMasCaloricoConsumido);
+        String nombreAlimentoMasCaloricoConsumido = "";
+        if(comidaMasCalorica != null){
+            nombreAlimentoMasCaloricoConsumido = comidaMasCalorica.getNombreComida();
+            System.out.println(nombreAlimentoMasCaloricoConsumido);
+        }
         return nombreAlimentoMasCaloricoConsumido;
     }
 }
