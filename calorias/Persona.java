@@ -49,20 +49,45 @@ public class Persona
      */
     public int comer(Comida alimento)
     {
-       
-        if (caloriasIngeridas < metabasal){
-            caloriasIngeridas += alimento.getCalorias();
-        }
-        else{
-            caloriasIngeridas = -1;
-        }
-        
-        
-        return caloriasIngeridas;
+       int caloriasConsumidas = -1;
+       if(caloriasIngeridas <= metabasal){
+           caloriasConsumidas = alimento.getCalorias();
+           caloriasIngeridas = caloriasIngeridas + alimento.getCalorias();
+       }
+       return caloriasConsumidas;
+ 
     }
     
     public int getCaloriasIngeridas()
     {
         return caloriasIngeridas;
     }
+    
+    public String contestar(String pregunta)
+    {
+        String respuesta = "";
+        if(caloriasIngeridas > metabasal){
+            respuesta = pregunta.toUpperCase();
+
+        }
+        else{
+            if(pregunta.length() % 3 == 0 ){
+                respuesta = "SI";
+            }
+            else{
+                respuesta = "NO";
+            }
+        }
+        
+         if(pregunta.contains(nombre)){
+            respuesta = pregunta.toUpperCase();
+        }
+        System.out.println(respuesta);
+        return respuesta;
+    }   
 }
+        
+        
+        
+        
+
