@@ -22,7 +22,8 @@ public class Persona
     private int caloriasIngeridas;
     //guarda el metabolismo basal de la persona sera distinto si es hombre o mujer
     private int metabasal;
-
+    
+    private Comida comidaMasCalorica;
     /**
      * Constructor for objects of class Persona
      * El sexo es hombre si es true y mujer si es false
@@ -42,6 +43,7 @@ public class Persona
         else{
             metabasal = (10*peso) + (6*altura) + (5*edad) - 161;
         }
+        comidaMasCalorica = null;
     }
 
     /**
@@ -50,10 +52,16 @@ public class Persona
     public int comer(Comida alimento)
     {
        int caloriasConsumidas = -1;
+       
        if(caloriasIngeridas <= metabasal){
            caloriasConsumidas = alimento.getCalorias();
            caloriasIngeridas = caloriasIngeridas + alimento.getCalorias();
+           if(comidaMasCalorica.getCalorias() <= alimento.getCalorias())
+           {
+               comidaMasCalorica = alimento;
+           }
        }
+       
        return caloriasConsumidas;
  
     }
@@ -85,6 +93,13 @@ public class Persona
         System.out.println(respuesta);
         return respuesta;
     }   
+    
+    public String getAlimentoMasCaloricoConsumido()
+    {
+        String nombreAlimentoMasCaloricoConsumido = comidaMasCalorica.getNombreComida();
+        System.out.println(nombreAlimentoMasCaloricoConsumido);
+        return nombreAlimentoMasCaloricoConsumido;
+    }
 }
         
         
